@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.apap.tutorial7.rest.Setting;
 
 @RestController
-public class factoryController {
+public class FactoryController {
 	
 	//tutorial7
 	@Autowired
@@ -28,6 +28,7 @@ public class factoryController {
 	@GetMapping(value = "/model/{namaFactory}")
 	 private ResponseEntity<String> getStatus(@PathVariable ("namaFactory") String factory) throws Exception {
 	  String path = Setting.factoryUrl+"&factory="+factory+"&year="+ Calendar.getInstance().get(Calendar.YEAR);
+	  System.out.println(path);
 	  ResponseEntity<String> response = restTemplate.getForEntity(path, String.class);
 	  return response;
 	 }
